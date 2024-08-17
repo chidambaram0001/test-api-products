@@ -1,0 +1,46 @@
+<ng-content></ng-content>
+<h3>Product Details</h3> 
+<div class="images">
+    <carousel>
+        <ng-container *ngFor="let item of modelData.images;">
+          <ng-container *carouselItem>
+            <div class="item"><img src={{item}} /></div>
+          </ng-container>
+        </ng-container>
+    </carousel>
+</div>
+<div class="prd-details">
+    <div class="titledesc">
+        <h5>{{modelData.title}}</h5>
+        <div class="desc">{{modelData.description}}</div>
+    </div>
+    
+    <br/>
+    <div class="about">
+        <div>
+            <h6>Brand</h6> 
+            <label>{{modelData.brand}}</label>
+        </div>
+        <div>
+            <h6>Category</h6> 
+            <label> {{modelData.category}}</label>
+        </div>
+       
+        <div class="star">
+            <h6>Rating</h6>
+            <span class="fa fa-star" *ngFor="let i of starCount" [ngClass]="i?'checked':''"></span>
+            <!-- <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span> -->
+        </div>
+    </div>
+    <div class="buy">
+        <div class="price"> ₹ {{modelData.price}}</div>
+        <button class="btn btn-primary"> Buy </button>
+    </div>
+   
+</div>
+
+

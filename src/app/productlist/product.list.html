@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="outerlist">
+        <div class="title"> Product List</div>
+        <div class="sort">
+            <label> Sort by</label>
+            <select (change)="handleSort($event)">
+                <option value="rating">Rating</option>
+                <option value="discountPercentage">Discount Percentage</option>
+                <option value="price">Price</option>
+            </select>
+        </div>
+    </div>
+    <div class="outerprdlist">
+        <div class="outercontent" *ngFor="let i of prodList">
+            <a href="javascript:void(0)" (click)="showPopup(i.id)">
+                <div class="img">
+                    <img src="{{i.thumbnail}}" alt="{{i.title}}"/>
+                </div>
+                <h5>{{i.title}}</h5>
+                <label class="desc">{{i.description}}</label>
+            </a>
+        </div>
+    </div>
+
+    <div class="page">
+        <button class="prev btn-primary" (click)="handlePrev()" [attr.disabled]="isdisabled"> <i class="fa fa-angle-double-left" aria-hidden="true"></i> </button>
+        <button class="nxt btn-primary" (click)="handleNext()"> <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
+    </div>
+</div>
+
+<popup *ngIf="showPopupFlag" class="popup" [curPrdData]="selecteData"><i class="fa fa-times close" aria-hidden="true" (click)="handleClose()"></i></popup>
+<div class="overlay" *ngIf="showPopupFlag"> </div>
